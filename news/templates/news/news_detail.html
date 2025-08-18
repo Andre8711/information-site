@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ news_item.title }}</title>
+</head>
+<body>
+    <h1>{{ news_item.title }}</h1>
+    <p>{{ news_item.content }}</p>
+    <p><small>Категория: {{ news_item.category.name }} | Дата: {{ news_item.created_at }}</small></p>
+    <a href="{% url 'news_list' %}">Назад к новостям</a>
+</body>
+</html>

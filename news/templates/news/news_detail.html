@@ -1,12 +1,28 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>{{ news_item.title }}</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{{ article.title }}</title>
+<link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
-    <h1>{{ news_item.title }}</h1>
-    <p>{{ news_item.content }}</p>
-    <p><small>Категория: {{ news_item.category.name }} | Дата: {{ news_item.created_at }}</small></p>
-    <a href="{% url 'news_list' %}">Назад к новостям</a>
+<header>
+<h1>{{ article.title }}</h1>
+</header>
+<main>
+<h2>{{ article.title }}</h2>
+<p>{{ article.content }}</p>
+<p><em>Дата публикации: {{ article.published_date }}</em></p>
+<a href="{% url 'news' %}">Вернуться к списку новостей</a>
+</main>
+<footer>
+<p>&copy; 2025 Ваша Компания. Все права защищены.</p>
+</footer>
 </body>
 </html>

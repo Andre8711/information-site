@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Современная научная статья</title>
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+<style>
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.7;
+    margin: 0;
+    background: #f4f6fa;
+    color: #23252b;
+  }
+  header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 40px 0 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.07);
+    border-radius: 0 0 16px 16px;
+    margin-bottom: 30px;
+  }
+  h1 {
+    font-size: 2.3em;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  nav {
+    background: #34495e;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.05);
+    margin-bottom: 32px;
+  }
+  nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  nav ul li {
+    margin: 0 18px;
+  }
+  nav ul li a {
+    display: block;
+    padding: 16px 0;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.2s, border-bottom 0.2s;
+    border-bottom: 2px solid transparent;
+  }
+  nav ul li a:hover, nav ul li a:focus {
+    color: #f1c40f;
+    border-bottom: 2px solid #f1c40f;
+  }
+  article {
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    background: #fff;
+    padding: 36px 32px 28px 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(44,62,80,0.10);
+  }
+  h2 {
+    color: #2c3e50;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    font-size: 1.3em;
+    font-weight: 600;
+    border-left: 4px solid #f1c40f;
+    padding-left: 12px;
+    background: linear-gradient(90deg, #f9e79f 0%, #fff 100%);
+    border-radius: 4px;
+  }
+  p {
+    margin-bottom: 15px;
+    font-size: 1.08em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Современная научная статья</h1>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="{% url 'index' %}">Главная</a></li>
+    <li><a href="{% url 'news' %}">Новости</a></li>
+    <li><a href="{% url 'articles' %}">Статьи</a></li>
+    <li><a href="{% url 'contacts' %}">Контакты</a></li>
+  </ul>
+</nav>
+
+<article>
+  <h2>Введение</h2>
+  <p>{{ article.intro }}</p>
+  <h2>Методы</h2>
+  <p>{{ article.methods }}</p>
+  <h2>Результаты</h2>
+  <p>{{ article.results }}</p>
+  <h2>Обсуждение</h2>
+  <p>{{ article.discussion }}</p>
+  <h2>Заключение</h2>
+  <p>{{ article.conclusion }}</p>
+</article>
+
+<footer>
+  <p>&copy; 2025 Научная публикация</p>
+</footer>
+
+</body>
+</html>

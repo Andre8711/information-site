@@ -1,27 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-<head>
+{% extends 'base.html' %}
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Новости</title>
-<link rel="stylesheet" href="{% static 'styles.css' %}">
-</head>
-<body>
-<header>
-<h1>Новости и Обзоры</h1>
-<nav>
-  <ul>
-    <li><a href="{% url 'index' %}">Главная</a></li>
-    <li><a href="{% url 'news' %}">Новости</a></li>
-    <li><a href="{% url 'articles' %}">Статьи</a></li>
-    <li><a href="{% url 'contacts' %}">Контакты</a></li>
-    <li><a href="{% url 'register' %}">Регистрация</a></li>
-  </ul>
-</nav>
-</header>
-<main>
+{% block title %}Новости{% endblock %}
+
+{% block content %}
 <h2 class="section-title">Последние новости</h2>
 <div class="news-grid">
 {% if news %}
@@ -39,6 +20,4 @@
   <p>Новости отсутствуют.</p>
 {% endif %}
 </div>
-</main>
-</body>
-</html>
+{% endblock %}

@@ -2,10 +2,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Новости</title>
@@ -15,11 +12,13 @@
 <header>
 <h1>Новости и Обзоры</h1>
 <nav>
-<a href="{% url 'index' %}">Главная</a>
-<a href="{% url 'news' %}">Новости</a>
-<a href="{% url 'articles' %}">Статьи</a>
-<a href="{% url 'contacts' %}">Контакты</a>
-</nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">Главная</a></li>
+                    <li><a href="{% url 'news' %}">Новости</a></li>
+                    <li><a href="{% url 'articles' %}">Статьи</a></li>
+                    <li><a href="{% url 'contacts' %}">Контакты</a></li>
+                </ul>
+            </nav>
 </header>
 <main>
 <h2 class="section-title">Последние новости</h2>

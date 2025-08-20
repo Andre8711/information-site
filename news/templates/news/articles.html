@@ -11,11 +11,13 @@
 <header>
 <h1>Статьи и Обзоры</h1>
 <nav>
-<a href="{% url 'index' %}">Главная</a>
-<a href="{% url 'news' %}">Новости</a>
-<a href="{% url 'articles' %}">Статьи</a>
-<a href="{% url 'contacts' %}">Контакты</a>
-</nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">Главная</a></li>
+                    <li><a href="{% url 'news' %}">Новости</a></li>
+                    <li><a href="{% url 'articles' %}">Статьи</a></li>
+                    <li><a href="{% url 'contacts' %}">Контакты</a></li>
+                </ul>
+            </nav>
 </header>
 <main>
 <h2 class="section-title">Последние статьи</h2>

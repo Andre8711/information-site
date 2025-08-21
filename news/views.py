@@ -2,6 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseForbidden
+from django.contrib.auth.models import User
+from django.contrib import messages
 
 ALLOWED_USERS = ['123']  # или ['user1', 'user2']
 
@@ -23,16 +25,18 @@ def news_list(request):
     news = News.objects.all().order_by('-created_at')
     return render(request, 'news/news_list.html', {'news': news})
 
-# Страница регистрации
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('login')  # перенаправление на страницу входа
-    else:
-        form = UserCreationForm()
-    return render(request, 'news/register.html', {'form': form})
+        username = request.POST.get('name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        if User.objects.filter(username=username).exists():
+            messages.error(request, 'Пользователь с таким именем уже существует.')
+        else:
+            User.objects.create_user(username=username, email=email, password=password)
+            messages.success(request, 'Регистрация прошла успешно! Войдите в систему.')
+            return redirect('index')
+    return render(request, 'news/register.html')
 
 # Остальные функции без изменений
 def articles(request):

@@ -1,10 +1,26 @@
-{% extends 'base.html' %}
-{% block title %}Регистрация{% endblock %}
-{% block content %}
-<h2>Регистрация</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" class="btn">Зарегистрироваться</button>
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Регистрация</title>
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+<header>
+<h1>Регистрация</h1>
+</header>
+<main style="max-width:400px; margin:auto; padding:20px;">
+<form method="post" action="{% url 'register' %}">
+{% csrf_token %}
+<input type="text" name="name" placeholder="Имя" required style="width:100%; margin-bottom:10px; padding:8px;" />
+<input type="email" name="email" placeholder="Email" required style="width:100%; margin-bottom:10px; padding:8px;" />
+<input type="password" name="password" placeholder="Пароль" required style="width:100%; margin-bottom:10px; padding:8px;" />
+<button type="submit" style="width:100%; padding:10px;">Зарегистрироваться</button>
 </form>
-{% endblock %}
+<br>
+<a href="{% url 'index' %}" style="display:inline-block; text-align:center; width:100%; padding:10px; background:#ccc; text-decoration:none;">Вернуться на главную</a>
+</main>
+</body>
+</html>

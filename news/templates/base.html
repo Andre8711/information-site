@@ -21,12 +21,7 @@
     <li><a href="{% url 'news' %}">Новости</a></li>
     <li><a href="{% url 'articles' %}">Статьи</a></li>
     <li><a href="{% url 'contacts' %}">Контакты</a></li>
-    {% if not user.is_authenticated %}
-      <li><a href="{% url 'login' %}">Вход</a></li>
-      <li><a href="{% url 'register' %}">Регистрация</a></li>
-    {% else %}
-      <li><a href="{% url 'logout' %}">Выход</a></li>
-    {% endif %}
+    <li><a href="{% url 'register' %}">Регистрация</a></li>
   </ul>
 </nav>
 </header>

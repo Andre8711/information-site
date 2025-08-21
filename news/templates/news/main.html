@@ -17,29 +17,21 @@
             <li><a href="{% url 'news' %}">Новости</a></li>
             <li><a href="{% url 'articles' %}">Статьи</a></li>
             <li><a href="{% url 'contacts' %}">Контакты</a></li>
+            <li><a href="{% url 'register' %}">Регистрация</a></li>
         </ul>
     </nav>
 </header>
 
 <main>
-    <!-- Последние новости -->
-    <section class="section" id="latest-news">
-        <h2 class="section-title">Последние новости</h2>
-        <div class="section-cards news-grid">
-            {% if news %}
-                {% for item in news %}
-                <div class="card news-item">
-                    <h3 class="news-title"><a href="{% url 'news_detail' item.id %}">{{ item.title }}</a></h3>
-                    <p>{{ item.content|truncatewords:20 }}</p>
-                    <div class="news-date">{{ item.published_date }}</div>
-                </div>
-                {% endfor %}
-            {% else %}
-                <p>Нет новостей для отображения.</p>
-            {% endif %}
+    <!-- Блок прогноза погоды -->
+    <section class="section" id="weather-forecast">
+        <h2 class="section-title">Прогноз погоды</h2>
+        <div id="weather-container">
+            <p>Загрузка прогноза погоды...</p>
         </div>
     </section>
 
+    <!-- Остальные разделы остаются без изменений -->
     <!-- Разделы портала -->
     <section class="section" id="categories">
         <h2 class="section-title">Разделы портала</h2>
@@ -81,20 +73,21 @@
         </div>
     </section>
 </main>
+
 <footer>
     <div class="footer-container">
         <div class="footer-section">
-<nav>
-  <ul>
-    <li><a href="{% url 'index' %}">Главная</a></li>
-    <li><a href="{% url 'news' %}">Новости</a></li>
-    <li><a href="{% url 'articles' %}">Статьи</a></li>
-    <li><a href="{% url 'contacts' %}">Контакты</a></li>
-    <li><a href="{% url 'register' %}">Регистрация</a></li>
-  </ul>
-</nav>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">Главная</a></li>
+                    <li><a href="{% url 'news' %}">Новости</a></li>
+                    <li><a href="{% url 'articles' %}">Статьи</a></li>
+                    <li><a href="{% url 'contacts' %}">Контакты</a></li>
+                    <li><a href="{% url 'register' %}">Регистрация</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="footer-section">
+         <div class="footer-section">
             <p>Адрес: г. Москва, ул. Примерная, 1<br>
             Email: info@portal.ru<br>
             Телефон: +7 (999) 123-45-67</p>
@@ -111,5 +104,27 @@
         <span style="margin-left:10px;">&copy; 2025 Информационный портал</span>
     </div>
 </footer>
+
+<!-- Скрипт для загрузки прогноза погоды -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('weather-container');
+
+    fetch('https://api.open-meteo.com/v1/forecast?latitude=55.7558&longitude=37.6173&daily=temperature_2m_max,temperature_2m_min&timezone=Europe/Moscow')
+        .then(response => response.json())
+        .then(data => {
+            const today = data.daily;
+            const maxTemp = today.temperature_2m_max[0];
+            const minTemp = today.temperature_2m_min[0];
+            container.innerHTML = `
+                <p>Сегодня: ${maxTemp}°C / ${minTemp}°C</p>
+            `;
+        })
+        .catch(() => {
+            container.innerHTML = '<p>Не удалось загрузить прогноз погоды.</p>';
+        });
+});
+</script>
+
 </body>
 </html>

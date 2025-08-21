@@ -289,3 +289,21 @@ h2.section-title {
   }
 }
 
+/* Стиль для блока прогноза погоды */
+#weather-container {
+  background-color: #f0f8ff; /* светлый голубой фон */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 1.2em;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+#weather-container p {
+  margin: 0;
+  font-weight: bold;
+  color: #333;
+}

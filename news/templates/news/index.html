@@ -6,21 +6,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Главная</title>
 <link rel="stylesheet" href="{% static 'styles.css' %}">
+
 </head>
 <body>
 <header>
 <h1>Информационный портал</h1>
 <nav>
-                <ul>
-                    <li><a href="{% url 'index' %}">Главная</a></li>
-                    <li><a href="{% url 'news' %}">Новости</a></li>
-                    <li><a href="{% url 'articles' %}">Статьи</a></li>
-                    <li><a href="{% url 'contacts' %}">Контакты</a></li>
-                </ul>
-            </nav>
+    <ul>
+        <li><a href="{% url 'index' %}">Главная</a></li>
+        <li><a href="{% url 'news' %}">Новости</a></li>
+        <li><a href="{% url 'articles' %}">Статьи</a></li>
+        <li><a href="{% url 'contacts' %}">Контакты</a></li>
+        <li><a href="{% url 'register' %}">Регистрация</a></li> 
+    </ul>
+</nav>
 </header>
 <main>
 <h2>Добро пожаловать!</h2>
 <p>Это стартовая страница сайта.</p>
 </main>
+
 </body>
+</html>

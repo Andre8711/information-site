@@ -4,6 +4,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseForbidden
 from django.contrib.auth.models import User
 from django.contrib import messages
+from .models import Article
+
+def article_detail(request, pk):
+    article = Article.objects.get(pk=pk)
+    return render(request, 'news/article_detail.html', {'article': article})
 
 ALLOWED_USERS = ['123']  # или ['user1', 'user2']
 
@@ -21,8 +26,7 @@ def index(request):
 
 @user_allowed
 def news_list(request):
-    from .models import News
-    news = News.objects.all().order_by('-created_at')
+    news = Article.objects.filter(is_published=True).order_by('-published_at')
     return render(request, 'news/news_list.html', {'news': news})
 
 def register(request):
@@ -38,7 +42,6 @@ def register(request):
             return redirect('index')
     return render(request, 'news/register.html')
 
-# Остальные функции без изменений
 def articles(request):
     return render(request, 'news/articles.html')
 
@@ -50,3 +53,4 @@ def category(request, category_name):
 
 def article_detail(request, article_slug):
     return render(request, 'news/article_detail.html', {'article_slug': article_slug})
+

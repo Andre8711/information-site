@@ -60,15 +60,15 @@
         <div class="section-cards popular-list">
             <article class="popular-item card">
                 <img src="{% static 'top1.jpg' %}" alt="Интервью с экспертом" />
-                <h4><a href="{% url 'article' 'interview' %}">Интервью с экспертом</a></h4>
+                <h4><a href="{% url 'article_detail' 1 %}">Интервью с экспертом</a></h4>
             </article>
             <article class="popular-item card">
                 <img src="{% static 'top2.jpg' %}" alt="Аналитика недели" />
-                <h4><a href="{% url 'article' 'analytics' %}">Аналитика недели</a></h4>
+                <h4><a href="{% url 'article_detail' 2 %}">Аналитика недели</a></h4>
             </article>
             <article class="popular-item card">
                 <img src="{% static 'top3.jpg' %}" alt="Видео: Обзор событий" />
-                <h4><a href="{% url 'article' 'video' %}">Видео: Обзор событий</a></h4>
+                <h4><a href="{% url 'article_detail' 3 %}">Видео: Обзор событий</a></h4>
             </article>
         </div>
     </section>

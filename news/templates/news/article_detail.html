@@ -1,10 +1,12 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}Статья - {{ article.title }}{% endblock %}
+{% block title %}{{ article.title }}{% endblock %}
 
 {% block content %}
-<h1>{{ article.title }}</h1>
-<p>{{ article.content }}</p>
-<p><em>Дата публикации: {{ article.published_date }}</em></p>
-<a href="{% url 'articles' %}">Назад к списку статей</a>
+  <h2>{{ article.title }}</h2>
+  <p>{{ article.published_at|date:"d.m.Y H:i" }}</p>
+  {% if article.image %}
+    <img src="{{ article.image.url }}" alt="{{ article.title }}">
+  {% endif %}
+  <div>{{ article.content|linebreaks }}</div>
 {% endblock %}

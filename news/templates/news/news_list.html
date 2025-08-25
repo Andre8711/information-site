@@ -4,20 +4,25 @@
 
 {% block content %}
 <h2 class="section-title">Последние новости</h2>
+<p>Всего новостей: {{ news|length }}</p>
 <div class="news-grid">
 {% if news %}
   {% for item in news %}
   <div class="news-card">
-    {% if item.image_url %}
-    <img src="{{ item.image_url }}" alt="{{ item.title }}" class="news-image" />
+    
+    {% if item.image %}
+      <img src="{{ item.image.url }}" alt="{{ item.title }}" class="news-image" />
     {% endif %}
-    <h3 class="news-title"><a href="{% url 'article' item.id %}">{{ item.title }}</a></h3>
+    <h3 class="news-title">
+  <a href="{% url 'article_detail' item.pk %}">{{ item.title }}</a>
+</h3>
     <p>{{ item.content|truncatewords:30 }}</p>
-    <div class="news-date">{{ item.published_date }}</div>
+    <div class="news-date">{{ item.published_at|date:"d.m.Y H:i" }}</div>
   </div>
   {% endfor %}
 {% else %}
   <p>Новости отсутствуют.</p>
+  
 {% endif %}
 </div>
 {% endblock %}
